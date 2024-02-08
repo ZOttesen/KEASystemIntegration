@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System.Text;
+using System.Xml.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using YamlDotNet.Serialization;
@@ -18,30 +19,39 @@ public class FileConverter
         string[] values = File.ReadLines(file).Skip(1).First().Split(',');
         Dictionary<string, object> data = new Dictionary<string, object>();
         int keyIndex = 0; 
-        for (int i = 0; i < values.Length && keyIndex < keys.Length;)
-        {
-            if (values[i].StartsWith("\""))
-            {
-                string combinedValues = values[i++].TrimStart('"');
-                while (i < values.Length && !values[i].EndsWith("\""))
-                {
-                    combinedValues += "," + values[i++];
-                }
-                if (i < values.Length)
-                {
-                    combinedValues += "," + values[i].TrimEnd('"');
-                }
-                List<string> valueList = combinedValues.Split(',').Select(v => v.Trim()).ToList();
-                data.Add(keys[keyIndex], valueList);
-                i++; 
+        StringBuilder combinedValue = new StringBuilder();
+        bool insideQuotes = false;
+        for (int i = 0; i < values.Length && keyIndex < keys.Length; i++) {
+            string currentValue = values[i];
+            if (insideQuotes) {
+                combinedValue.Append(',');
             }
-            else
-            {
-                data.Add(keys[keyIndex], values[i++]);
+    
+            if (currentValue.StartsWith("\"") && !insideQuotes) {
+                insideQuotes = true;
+                currentValue = currentValue.Substring(1); 
             }
-            keyIndex++;
-        }
+            if (currentValue.EndsWith("\"") && insideQuotes) {
+                insideQuotes = false;
+                currentValue = currentValue.Substring(0, currentValue.Length - 1); 
+            }
+    
+            combinedValue.Append(currentValue);
+    
+            if (!insideQuotes) {
+                // If not inside quotes, we've reached the end of the current value.
+                string finalValue = combinedValue.ToString();
+                combinedValue.Clear();
         
+                // Check if the value contains commas indicating it should be a list.
+                if (finalValue.Contains(',')) {
+                    data[keys[keyIndex]] = finalValue.Split(',').Select(v => v.Trim()).ToList();
+                } else {
+                    data[keys[keyIndex]] = finalValue;
+                }
+                keyIndex++; // Move to the next key.
+            }
+        }
         writeToConsole(data);
     }
 
@@ -92,10 +102,16 @@ public class FileConverter
 
         var data = deserializer.Deserialize<Dictionary<string, object>>(yamlContent);
 
-        if (data["hobbies"] is List<object> hobbiesObjectList)
+        foreach (var key in data.Keys.ToList())
         {
-            List<string> hobbiesStringList = hobbiesObjectList.ConvertAll(obj => obj.ToString());
-            data["hobbies"] = hobbiesStringList; 
+            if (data[key] is List<object> objectList)
+            {
+                // Convert each object in the list to its string representation
+                List<string> stringList = objectList.ConvertAll(obj => obj.ToString());
+        
+                // Update the dictionary with the new list of strings
+                data[key] = stringList;
+            }
         }
         writeToConsole(data);
     }
