@@ -57,3 +57,5 @@ app.MapGet("/yaml", () =>
     })
     .WithName("jamlFile")
     .WithOpenApi();
+app.Run();
+
