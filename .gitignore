@@ -450,7 +450,7 @@ web_modules/
 
 # Optional npm cache directory
 .npm
-
+.parcel-cache
 # Optional eslint cache
 .eslintcache
 

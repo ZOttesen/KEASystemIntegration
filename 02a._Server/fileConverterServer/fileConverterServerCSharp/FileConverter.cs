@@ -11,7 +11,7 @@ public class FileConverter
     {
     }
     
-    public void csvConverter(string fileName)
+    public string csvConverter(string fileName)
     {
         string file = "C:\\Users\\ZackO\\RiderProjects\\dataConverter\\dataConverter\\files\\" + fileName + ".csv";
         string[] keys = File.ReadLines(file).First().Split(',');
@@ -42,21 +42,21 @@ public class FileConverter
             keyIndex++;
         }
         
-        writeToConsole(data);
+        return JsonConvert.SerializeObject(data, Formatting.Indented);
     }
 
-    public void jsonConverter(string fileName)
+    public string jsonConverter(string fileName)
     {
-        StreamReader sr = new StreamReader("C:\\Users\\ZackO\\RiderProjects\\dataConverter\\dataConverter\\files\\" + fileName + ".json");
+        StreamReader sr = new StreamReader("C:\\Users\\ZackO\\OneDrive\\Desktop\\KEA\\SystemIntegration\\KEASystemIntegration\\02a._Server\\fileConverterServer\\fileConverterServerCSharp\\files\\" + fileName + ".json");
         string json = sr.ReadToEnd();
         sr.Close();
         
         Dictionary<string, object> data = JsonConvert.DeserializeObject<Dictionary<string, Object>>(json);
-
-        writeToConsole(data);
+        
+        return JsonConvert.SerializeObject(data, Formatting.Indented);
     }
 
-    public void xmlConverter(string fileName)
+    public string xmlConverter(string fileName)
     {
         string file = "C:\\Users\\ZackO\\RiderProjects\\dataConverter\\dataConverter\\files\\" + fileName + ".xml";
         string xmlContent = File.ReadAllText(file);
@@ -78,10 +78,10 @@ public class FileConverter
             }
         }
         
-        writeToConsole(data);
+        return JsonConvert.SerializeObject(data, Formatting.Indented);
     }
 
-    public void yamlConverter(string fileName)
+    public string yamlConverter(string fileName)
     {
         string file = "C:\\Users\\ZackO\\RiderProjects\\dataConverter\\dataConverter\\files\\" + fileName + ".yaml";
         string yamlContent = File.ReadAllText(file);
@@ -97,36 +97,6 @@ public class FileConverter
             List<string> hobbiesStringList = hobbiesObjectList.ConvertAll(obj => obj.ToString());
             data["hobbies"] = hobbiesStringList; 
         }
-        writeToConsole(data);
-    }
-
-    private void writeToConsole(Dictionary<string, object> data)
-    {
-        foreach (var entry in data)
-        {
-            Console.Write($"{entry.Key}: ");
-            if (entry.Value is JArray array)
-            {
-                foreach (var item in array)
-                {
-                    Console.Write($"{item}\n\t");
-                }
-
-                Console.WriteLine();
-            }
-            else if (entry.Value is List<string> list)
-            {
-                foreach (var item in list)
-                {
-                    Console.Write($"{item}\n\t");
-                }
-
-                Console.WriteLine();
-            }
-            else
-            {
-                Console.WriteLine(entry.Value);
-            }
-        }
+        return JsonConvert.SerializeObject(data, Formatting.Indented);
     }
 }

@@ -1,0 +1,8 @@
+@fileConverterServerCSharp_HostAddress = http://localhost:5202
+
+GET {{fileConverterServerCSharp_HostAddress}}/weatherforecast/
+Accept: application/json
+###
+GET {{fileConverterServerCSharp_HostAddress}}/json/
+Accept: application/json
+
