@@ -1,0 +1,6 @@
+@server_to_server_HostAddress = https://localhost:44384
+
+GET {{server_to_server_HostAddress}}/json/
+Accept: application/json
+
+###

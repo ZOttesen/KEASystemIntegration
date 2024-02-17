@@ -17,7 +17,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.Run();
 app.MapGet("/json", () =>
     {
         FileConverter fc = new FileConverter();
@@ -57,5 +57,4 @@ app.MapGet("/yaml", () =>
     })
     .WithName("jamlFile")
     .WithOpenApi();
-app.Run();
 

@@ -1,0 +1,9 @@
+﻿<me>
+    <name>Mogens</name>
+    <age>28</age>
+    <Hobbies>
+        <Hobby>Programming</Hobby>
+        <Hobby>Gaming</Hobby>
+        <Hobby>Reading</Hobby>
+    </Hobbies>
+</me>
