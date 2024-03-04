@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SSE Test</title>
+</head>
+<body>
+<h1>Server Sent Events Test</h1>
+<div id="events"></div>
+
+<script type="text/javascript">
+    var eventSource = new EventSource("/events");
+    eventSource.onmessage = function(event) {
+        console.log(event.data);
+        document.getElementById("events").innerHTML += event.data + "<br>";
+    };
+</script>
+</body>
+</html>
