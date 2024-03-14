@@ -7,24 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e064f03-fd26-488c-ae6a-2cef8602badf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../02a._Server/fileConverterServer/fileConverterServerCSharp/FileConverter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../02a._Server/fileConverterServer/fileConverterServerCSharp/files/me.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../02a._Server/fileConverterServer/fileConverterServerCSharp/files/me.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../02a._Server/fileConverterServer/fileConverterServerCSharp/files/me.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../02a._Server/fileConverterServer/fileConverterServerCSharp/files/me.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../05._Python_Environments/01._Virtualenv_Environment/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../05._Python_Environments/02._Pipenv_Environment/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../05._Python_Environments/03._Poetryenv_Environment/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../06._Servers/node/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../06._Servers/node/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.dataConverter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.dataConverter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataConverter/FileConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/dataConverter/FileConverter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataConverter/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/dataConverter/Program.cs" afterDir="false" />
-    </list>
+    <list default="true" id="2e064f03-fd26-488c-ae6a-2cef8602badf" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -103,6 +86,7 @@
       <workItem from="1707331970576" duration="211000" />
       <workItem from="1707389185692" duration="693000" />
       <workItem from="1707399389668" duration="1284000" />
+      <workItem from="1709635507906" duration="10000" />
     </task>
     <servers />
   </component>

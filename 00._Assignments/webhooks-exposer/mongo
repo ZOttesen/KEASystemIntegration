@@ -1,0 +1,3 @@
+FROM mongo:latest
+docker build -t webhooks-order .
+docker run --name my-mongodb-container -d -p 27017:27017 my-mongodb
