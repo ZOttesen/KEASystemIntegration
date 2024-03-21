@@ -9,12 +9,12 @@ try
     
     Console.WriteLine("JSON:");
     fileConverter.jsonConverter("me");
-    /*Console.WriteLine("CSV:");
+    Console.WriteLine("CSV:");
     fileConverter.csvConverter("me");
     Console.WriteLine("XML");
     fileConverter.xmlConverter("me");
     Console.WriteLine("YAML:");
-    fileConverter.yamlConverter("me");*/
+    fileConverter.yamlConverter("me");
 }
 catch(Exception e)
 {
