@@ -1,0 +1,15 @@
+components:
+  schemas:
+    Game:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        genre:
+          type: string
+        platform:
+          type: string
+          enum: [PC, PS4, XBOX, SWITCH, NES]
