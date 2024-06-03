@@ -16,6 +16,4 @@ app.post("/githubwebhookform", (req,res) => {
     res.sendStatus(204)
 })
 
-
-
 app.listen(8080, () => console.log("Server is running on port ", 8080))
