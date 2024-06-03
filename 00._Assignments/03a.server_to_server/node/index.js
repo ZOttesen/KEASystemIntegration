@@ -1,16 +1,10 @@
 import express from 'express';
 import {xmlParser, yamlParser, csvParser, jsonParser} from "./fileConverter.js";
 import fetch from 'node-fetch';
-import https from 'https';
 
 const app = express();
 
 const PORT = 8080;
-
-const agent = new https.Agent({
-    rejectUnauthorized: false
-});
-
 
 app.get('/json', async (req, res) => {
     const data = await jsonParser('./files/me.json');
@@ -32,7 +26,7 @@ app.get('/xml', async (req, res) => {
 
 app.get("/csharpJson", async (req, res) => {
     try {
-        const response = await fetch('https://localhost:44384/json', { agent });
+        const response = await fetch('http://localhost:5168/json');
         const data = await response.json();
         res.send(data);
     } catch (error) {
@@ -43,7 +37,7 @@ app.get("/csharpJson", async (req, res) => {
 
 app.get("/csharpCSV", async (req, res) => {
     try {
-        const response = await fetch('https://localhost:44384/csv', { agent });
+        const response = await fetch('http://localhost:5168/csv' );
         const data = await response.json();
         res.send(data);
     } catch (error) {
@@ -53,7 +47,7 @@ app.get("/csharpCSV", async (req, res) => {
 });
 app.get("/csharpXML", async (req, res) => {
     try {
-        const response = await fetch('https://localhost:44384/xml', { agent });
+        const response = await fetch('http://localhost:5168/xml');
         const data = await response.json();
         res.send(data);
     } catch (error) {
@@ -63,7 +57,7 @@ app.get("/csharpXML", async (req, res) => {
 });
 app.get("/csharpYaml", async (req, res) => {
     try {
-        const response = await fetch('https://localhost:44384/yaml', { agent });
+        const response = await fetch('http://localhost:5168/yaml');
         const data = await response.json();
         res.send(data);
     } catch (error) {

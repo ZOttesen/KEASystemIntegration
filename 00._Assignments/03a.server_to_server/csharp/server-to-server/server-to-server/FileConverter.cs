@@ -13,7 +13,9 @@ public class FileConverter
     
     public string csvConverter(string fileName)
     {
-        string file = "C:\\Users\\ZackO\\RiderProjects\\dataConverter\\dataConverter\\files\\" + fileName + ".csv";
+        
+        string projectDirectory = @"C:\Users\ZackO\Desktop\KEA\SystemIntegration\KEASystemIntegration\00._Assignments\01a._FileConverter\dataConverter\dataConverter\files\";
+        string file = Path.Combine(projectDirectory, $"{fileName}.csv");
         string[] keys = File.ReadLines(file).First().Split(',');
         string[] values = File.ReadLines(file).Skip(1).First().Split(',');
         Dictionary<string, object> data = new Dictionary<string, object>();
@@ -47,19 +49,19 @@ public class FileConverter
 
     public string jsonConverter(string fileName)
     {
-        StreamReader sr = new StreamReader("C:\\Users\\ZackO\\OneDrive\\Desktop\\KEA\\SystemIntegration\\KEASystemIntegration\\02a._Server\\fileConverterServer\\fileConverterServerCSharp\\files\\" + fileName + ".json");
-        string json = sr.ReadToEnd();
-        sr.Close();
-        
+        string projectDirectory = @"C:\Users\ZackO\Desktop\KEA\SystemIntegration\KEASystemIntegration\00._Assignments\01a._FileConverter\dataConverter\dataConverter\files\";
+        string path = Path.Combine(projectDirectory, $"{fileName}.json");
+        string json = File.ReadAllText(path);
+    
         Dictionary<string, object> data = JsonConvert.DeserializeObject<Dictionary<string, Object>>(json);
-        
+    
         return JsonConvert.SerializeObject(data, Formatting.Indented);
     }
 
     public string xmlConverter(string fileName)
     {
-        string file = "C:\\Users\\ZackO\\RiderProjects\\dataConverter\\dataConverter\\files\\" + fileName + ".xml";
-        string xmlContent = File.ReadAllText(file);
+        string projectDirectory = @"C:\Users\ZackO\Desktop\KEA\SystemIntegration\KEASystemIntegration\00._Assignments\01a._FileConverter\dataConverter\dataConverter\files\";
+        string xmlContent = Path.Combine(projectDirectory, $"{fileName}.xml");
         
         XDocument doc = XDocument.Parse(xmlContent);
         var data = new Dictionary<string, object>();
@@ -83,14 +85,14 @@ public class FileConverter
 
     public string yamlConverter(string fileName)
     {
-        string file = "C:\\Users\\ZackO\\RiderProjects\\dataConverter\\dataConverter\\files\\" + fileName + ".yaml";
-        string yamlContent = File.ReadAllText(file);
+        string projectDirectory = @"C:\Users\ZackO\Desktop\KEA\SystemIntegration\KEASystemIntegration\00._Assignments\01a._FileConverter\dataConverter\dataConverter\files\";
+        string file = Path.Combine(projectDirectory, $"{fileName}.yaml");
         
         var deserializer = new DeserializerBuilder()
             .WithNamingConvention(UnderscoredNamingConvention.Instance) 
             .Build();
 
-        var data = deserializer.Deserialize<Dictionary<string, object>>(yamlContent);
+        var data = deserializer.Deserialize<Dictionary<string, object>>(file);
 
         if (data["hobbies"] is List<object> hobbiesObjectList)
         {
